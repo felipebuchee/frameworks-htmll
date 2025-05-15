@@ -3,8 +3,7 @@
 require_once("Conexao.php");
 
 class CriaClasses {
-    private $tbBanco = "Tables_in_enderecos";
-    private $con;
+    private $tbBanco = "Tables_in_enderecos";     private $con;
 
     function __construct(){
         $this->con = (new Conexao())->conectar();
@@ -17,7 +16,7 @@ class CriaClasses {
 
         foreach($tabelas as $tabela){
             $nomeTabela = ucfirst($tabela->{$this->tbBanco});
-            $conteudo = <<<EOT 
+            $conteudo = <<<EOT
 class {$nomeTabela} {
 }
 EOT;
