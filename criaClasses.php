@@ -1,29 +1,29 @@
-<?php 
+<?php
+include "Conexao.php";
 
-require_once("Conexao.php");
+class CriaClasses1 {
+    private $tbBanco = "Tables_in_enderecos";
+    private $con;
 
-class CriaClasses {
-    private $tbBanco = "Tables_in_enderecos";     private $con;
-
-    function __construct(){
+    function __construct() {
         $this->con = (new Conexao())->conectar();
     }
 
-    function ClassesModel(){
+    function ClassesModel() {
         $sql = "SHOW TABLES";
         $query = $this->con->query($sql);
         $tabelas = $query->fetchAll(PDO::FETCH_OBJ);
 
-        foreach($tabelas as $tabela){
+        foreach ($tabelas as $tabela) {
             $nomeTabela = ucfirst($tabela->{$this->tbBanco});
             $conteudo = <<<EOT
 class {$nomeTabela} {
 }
 EOT;
 
-            print "Conteúdo: <br><pre>$conteudo</pre></br>";
+            echo "conteudo:<br><pre>$conteudo</pre><br><br>";
         }
     }
 }
 
-(new CriaClasses())->ClassesModel();
+(new CriaClasses1())->ClassesModel();

@@ -1,14 +1,12 @@
 <?php
 
-class Conexao
-{
+class Conexao {
     private $server = "localhost";
     private $banco = "enderecos";
     private $usuario = "root";
     private $senha = "bancodedados";
 
-    function conectar()
-    {
+    function conectar() {
         try {
             $conn = new PDO(
                 "mysql:host=" . $this->server . ";dbname=" . $this->banco,
@@ -17,7 +15,7 @@ class Conexao
             );
             return $conn;
         } catch (Exception $e) {
-            print "Erro ao conectar ao banco de dados: " . $e->getMessage();
+            echo "Erro ao conectar com o Banco de dados: " . $e->getMessage();
         }
     }
 }
